@@ -1,1 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Josefin+Sans:wght@600&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  height: 100vh;
+  background: linear-gradient(#baa5d7, #e06c6f);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: large;
+}
+
+.main {
+  width: 30%;
+}
+
+.progress-cont {
+  width: 35%;
+  display: flex;
+  height: 6vh;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.prog-item {
+  background: #ccbeef;
+  height: 5px;
+  width: 24%;
+  border-radius: 5px;
+}
+
+.dark-prog-item {
+  background: #685ca4;
+}
+
+.form-cont {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  background: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 16px;
+  padding: 1.4rem;
+}
+
+.form-content > h2 {
+  color: #988baa;
+}
+.form-content > h3 {
+  color: #685ca4;
+  font-size: 20px;
+}
+
+.next-btn {
+  width: 100%;
+  margin: 20px 0;
+  outline: none;
+  border: none;
+  border-radius: 2rem;
+  height: 2rem;
+  background: #685ca4;
+  color: #efedf5;
+}
