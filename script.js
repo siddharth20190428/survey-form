@@ -20,37 +20,37 @@ const questions = [
 
   {
     question:
-      "Your ability to be flexible when faced with societal changes, or changes in your daily routine or environment, and to adopt new ways of living or working accordingly. Look at the scale below. Choose a number of stars between 1 and 9 which represents your adaptability to change.",
+      "Your ability to be flexible when faced with societal changes, or changes in your daily routine or environment, and to adopt new ways of living or working accordingly. Look at the scale below. Choose a number of stars between 1 and 10 which represents your adaptability to change.",
   },
 
   {
     question:
-      "Your ability to think highly of yourself and demonstrate appropriate levels of confidence and self-belief Look at the scale below. Choose a number of stars between 1 and 9 which represents your self worth & confidence.",
+      "Your ability to think highly of yourself and demonstrate appropriate levels of confidence and self-belief Look at the scale below. Choose a number of stars between 1 and 10 which represents your self worth & confidence.",
   },
 
   {
     question:
-      "Your imagination, artistic expression and your ability to generate novel ideas and find solutions to problems Look at the scale below. Choose a number of stars between 1 and 9 which represents your creativity & problem solving.",
+      "Your imagination, artistic expression and your ability to generate novel ideas and find solutions to problems Look at the scale below. Choose a number of stars between 1 and 10 which represents your creativity & problem solving.",
   },
 
   {
     question:
-      "Your ability to think highly of yourself and demonstrate appropriate levels of confidence and self-belief Look at the scale below. Choose a number of stars between 1 and 9 which represents your self worth & confiden",
+      "Your ability to think highly of yourself and demonstrate appropriate levels of confidence and self-belief Look at the scale below. Choose a number of stars between 1 and 10 which represents your self worth & confiden",
   },
 
   {
     question:
-      "Your ability and desire to initiate, persevere with and complete effortful tasks and activities Look at the scale below. Choose a number of stars between 1 and 9 which represents your drive & motivation ",
+      "Your ability and desire to initiate, persevere with and complete effortful tasks and activities Look at the scale below. Choose a number of stars between 1 and 10 which represents your drive & motivation ",
   },
 
   {
     question:
-      "Your ability to approach situations consistently and calmly without uncontrolled emotion. Look at the scale below. Choose a number of stars between 1 and 9 which represents your stability & calmness.",
+      "Your ability to approach situations consistently and calmly without uncontrolled emotion. Look at the scale below. Choose a number of stars between 1 and 10 which represents your stability & calmness.",
   },
 
   {
     question:
-      "Your ability to easily fall asleep, stay asleep during the night and wake up feeling rested Look at the scale below. Choose a number of stars between 1 and 9 which represents your sleep quality.",
+      "Your ability to easily fall asleep, stay asleep during the night and wake up feeling rested Look at the scale below. Choose a number of stars between 1 and 10 which represents your sleep quality.",
   },
 ];
 
@@ -61,9 +61,7 @@ for (let i = 0; i < questions.length; i++) {
   item.classList.add("prog-item");
   progressCont.appendChild(item);
 }
-// let answers = [];
-
-console.log(questions.length);
+let answers = [];
 
 let currQuestion = 0;
 let progItems = document.querySelectorAll(".prog-item");
@@ -118,7 +116,7 @@ createques = () => {
         silderval.innerHTML = this.value;
       };
 
-      console.log(val);
+      answers.push(val);
     }
     container.appendChild(ques);
     container.appendChild(optionholder);
@@ -129,8 +127,6 @@ createques = () => {
 };
 
 next.addEventListener("click", () => {
-  console.log(currQuestion);
-
   progItems[currQuestion].classList.add("dark-prog-item");
 
   container.innerHTML = "";
