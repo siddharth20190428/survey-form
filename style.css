@@ -57,14 +57,6 @@
   text-align: center;
 }
 
-.form-content > h2 {
-  color: #988baa;
-}
-.form-content > h3 {
-  color: #685ca4;
-  font-size: 20px;
-}
-
 /* form container ends */
 
 .options {
@@ -131,12 +123,16 @@
 
 /* Media Query for Mobile Devices */
 @media (max-width: 480px) {
-  .form-cont {
-    font-size: 10px;
+  .main {
+    width: 80%;
+  }
+
+  .form-content {
+    font-size: 17px;
   }
 
   .options {
-    font-size: 17px;
+    font-size: 20px;
   }
 
   .slider {
@@ -156,8 +152,12 @@
 
 /* Media Query for low resolution  Tablets, Ipads */
 @media (min-width: 481px) and (max-width: 767px) {
-  .form-cont {
-    font-size: 11px;
+  .main {
+    width: 70%;
+  }
+
+  .form-content {
+    font-size: 19px;
   }
 
   .options {
@@ -181,7 +181,7 @@
 
 /* Media Query for Tablets Ipads portrait mode */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .form-cont {
+  .form-content {
     font-size: 14px;
   }
 
