@@ -1,5 +1,9 @@
 const questions = [
   {
+    question: "",
+    options: "",
+  },
+  {
     question: "What is your age",
     options: ["below 18", "18-25", "25-45", "45-65", "65+"],
   },
@@ -17,7 +21,6 @@ const questions = [
   {
     question:
       "Your ability to be flexible when faced with societal changes, or changes in your daily routine or environment, and to adopt new ways of living or working accordingly. Look at the scale below. Choose a number of stars between 1 and 9 which represents your adaptability to change.",
-    options: "",
   },
 
   {
@@ -60,6 +63,8 @@ for (let i = 0; i < questions.length; i++) {
 }
 // let answers = [];
 
+console.log(questions.length);
+
 let currQuestion = 0;
 let progItems = document.querySelectorAll(".prog-item");
 const container = document.querySelector(".form-cont");
@@ -75,7 +80,7 @@ slider.setAttribute("type", "range");
 createques = () => {
   if (currQuestion <= questions.length - 1) {
     ques.classList.add("form-content");
-    ques.innerHTML = questions[currQuestion].question;
+    ques.innerHTML = [currQuestion] + ". " + questions[currQuestion].question;
 
     if (currQuestion <= 3) {
       optionholder.classList.add("options");
@@ -98,20 +103,39 @@ createques = () => {
       });
     } else {
       optionholder.classList.add("options");
+      slider.classList.add("slider");
+      slider.setAttribute("min", "1");
+      slider.setAttribute("max", "10");
+
       optionholder.appendChild(slider);
+      let val = slider.value;
+
+      let silderval = document.createElement("span");
+      silderval.innerHTML = val;
+      optionholder.appendChild(silderval);
+
+      slider.oninput = function () {
+        silderval.innerHTML = this.value;
+      };
+
+      console.log(val);
     }
     container.appendChild(ques);
     container.appendChild(optionholder);
   } else {
     container.innerHTML = "THANK YOU FOR YOUR RESPONSE";
+    next.remove();
   }
 };
 
 next.addEventListener("click", () => {
+  console.log(currQuestion);
+
   progItems[currQuestion].classList.add("dark-prog-item");
-  currQuestion++;
 
   container.innerHTML = "";
   optionholder.innerHTML = "";
+
+  currQuestion++;
   createques();
 });
