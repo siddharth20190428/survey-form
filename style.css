@@ -33,7 +33,7 @@
 .prog-item {
   background: #ccbeef;
   height: 5px;
-  width: 16%;
+  width: 8%;
   border-radius: 5px;
 }
 
@@ -122,9 +122,13 @@
 /* media query starts */
 
 /* Media Query for Mobile Devices */
-@media (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   .main {
     width: 80%;
+  }
+
+  .progress-cont {
+    width: 90%;
   }
 
   .form-content {
@@ -153,7 +157,7 @@
 /* Media Query for low resolution  Tablets, Ipads */
 @media (min-width: 481px) and (max-width: 767px) {
   .main {
-    width: 70%;
+    width: 60%;
   }
 
   .form-content {
@@ -183,6 +187,10 @@
 @media (min-width: 768px) and (max-width: 1024px) {
   .form-content {
     font-size: 14px;
+  }
+
+  .progress-cont {
+    width: 35%;
   }
 
   .slider {

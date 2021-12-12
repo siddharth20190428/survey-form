@@ -65,6 +65,7 @@ let answers = [];
 
 let currQuestion = 0;
 let progItems = document.querySelectorAll(".prog-item");
+
 const container = document.querySelector(".form-cont");
 const ques = document.createElement("div");
 let optionholder = document.createElement("div");
@@ -78,7 +79,7 @@ slider.setAttribute("type", "range");
 createques = () => {
   if (currQuestion <= questions.length - 1) {
     ques.classList.add("form-content");
-    ques.innerHTML = [currQuestion] + ". " + questions[currQuestion].question;
+    ques.innerText = [currQuestion] + ". " + questions[currQuestion].question;
 
     if (currQuestion <= 3) {
       optionholder.classList.add("options");
@@ -99,6 +100,23 @@ createques = () => {
         // optionholder.appendChild(option);
         optionholder.appendChild(optionLabel);
       });
+
+      console.log(options);
+      console.log("length of option", options.length);
+
+      // for (var i = 0; i < options.length - 1; i++) {
+      //   if (options[i].checked) {
+      //     // get value, set checked flag or do whatever you need to
+      //     value = options[i].value;
+      //     next.disabled = false;
+      //     console.log(value);
+      //     console.log("button not disabled");
+      //   } else {
+      //     next.disabled = true;
+      //     // alert("Please select an option");
+      //     console.log("button disabled");
+      //   }
+      // }
     } else {
       optionholder.classList.add("options");
       slider.classList.add("slider");
