@@ -55,7 +55,29 @@
   color: #685ca4;
   font-size: 20px;
   text-align: center;
+  overflow-y: auto;
 }
+.form-cont h2 {
+  margin: 25px 0;
+}
+
+/* scrollbar starts */
+.form-cont * {
+  scrollbar-width: auto;
+  scrollbar-color: #c9c9c9 #ffffff;
+  outline: none !important;
+}
+
+/* Chrome, Edge, and Safari */
+.form-cont::-webkit-scrollbar {
+  width: 16px;
+}
+
+.form-cont::-webkit-scrollbar-thumb {
+  background-color: #c9c9c9;
+  border-radius: 10px;
+}
+/* scrollbar ends */
 
 /* form container ends */
 
@@ -81,10 +103,14 @@
 .label-para {
   margin: 0 10px;
 }
+
+.selected-option {
+  color: #baa5d7;
+}
 /* options starts */
 
 /* next button starts */
-.next-btn {
+.theme-btn {
   width: 100%;
   margin: 20px 0;
   outline: none;

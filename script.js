@@ -6,7 +6,6 @@ function setAttrs(element, attrs) {
 
 // form progress
 const progressCont = document.querySelector(".progress-cont");
-let progItems = document.querySelectorAll(".prog-item");
 
 for (let i = 0; i < questions.length + 1; i++) {
   let item = document.createElement("div");
@@ -14,7 +13,9 @@ for (let i = 0; i < questions.length + 1; i++) {
   progressCont.appendChild(item);
 }
 
-let answers = [];
+let progItems = document.querySelectorAll(".prog-item");
+
+let answers = new Array(10).fill(0);
 let currQuestion = 0;
 
 // question and options container
@@ -31,6 +32,20 @@ setAttrs(slider, [
 ]);
 
 const next = document.querySelector("#next-btn");
+
+const showResponses = () => {
+  questions.forEach((question, ind) => {
+    const quesCont = document.createElement("div");
+    // quesCont.classList.add("")
+    quesCont.innerText = [ind + 1] + ". " + question.question;
+    const selected = document.createElement("p");
+    selected.classList.add("selected-option");
+    selected.innerText = answers[ind];
+    quesCont.appendChild(selected);
+
+    container.appendChild(quesCont);
+  });
+};
 
 const createques = () => {
   if (currQuestion < questions.length) {
@@ -67,9 +82,10 @@ const createques = () => {
         if (options.length) {
           next.removeEventListener("click", onNextClick);
         }
-        option.addEventListener("change", () =>
-          next.addEventListener("click", onNextClick)
-        );
+        option.addEventListener("change", () => {
+          answers[currQuestion - 1] = element;
+          next.addEventListener("click", onNextClick);
+        });
       });
     } else {
       optionholder.appendChild(slider);
@@ -84,15 +100,22 @@ const createques = () => {
         silderval.innerHTML = this.value;
       };
 
-      answers.push(val);
+      answers[currQuestion] = val;
     }
     // pushing the question and options in the form container
     container.appendChild(ques);
     container.appendChild(optionholder);
   } else {
     // end of the questions
-    container.innerHTML = "THANK YOU FOR YOUR RESPONSE";
+    container.innerHTML = "<h2>THANK YOU FOR SUBMITTING YOUR RESPONSE</h2>";
     next.remove();
+    showResponses();
+
+    const newResponse = document.createElement("button");
+    newResponse.innerText = "Submit Another response";
+    newResponse.classList.add("theme-btn");
+    newResponse.addEventListener("click", () => location.reload());
+    container.appendChild(newResponse);
   }
 };
 
