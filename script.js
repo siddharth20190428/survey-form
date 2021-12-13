@@ -1,9 +1,5 @@
 const questions = [
   {
-    question: "",
-    options: "",
-  },
-  {
     question: "What is your age",
     options: ["below 18", "18-25", "25-45", "45-65", "65+"],
   },
@@ -56,7 +52,7 @@ const questions = [
 
 const progressCont = document.querySelector(".progress-cont");
 
-for (let i = 0; i < questions.length; i++) {
+for (let i = 0; i < questions.length + 1; i++) {
   let item = document.createElement("div");
   item.classList.add("prog-item");
   progressCont.appendChild(item);
@@ -72,16 +68,19 @@ let optionholder = document.createElement("div");
 const checkbox = document.createElement("span");
 
 let slider = document.createElement("INPUT");
+
 const next = document.querySelector(".next-btn");
+const nextBtn = document.querySelector("button");
 
 slider.setAttribute("type", "range");
 
 createques = () => {
   if (currQuestion <= questions.length - 1) {
     ques.classList.add("form-content");
-    ques.innerText = [currQuestion] + ". " + questions[currQuestion].question;
+    ques.innerText =
+      [currQuestion + 1] + ". " + questions[currQuestion].question;
 
-    if (currQuestion <= 3) {
+    if (currQuestion < 3) {
       optionholder.classList.add("options");
 
       let options = questions[currQuestion].options;
@@ -96,27 +95,8 @@ createques = () => {
         optionLabel.setAttribute("for", `option-${opId}`);
         optionLabel.innerText = element;
         optionLabel.appendChild(option);
-
-        // optionholder.appendChild(option);
         optionholder.appendChild(optionLabel);
       });
-
-      console.log(options);
-      console.log("length of option", options.length);
-
-      // for (var i = 0; i < options.length - 1; i++) {
-      //   if (options[i].checked) {
-      //     // get value, set checked flag or do whatever you need to
-      //     value = options[i].value;
-      //     next.disabled = false;
-      //     console.log(value);
-      //     console.log("button not disabled");
-      //   } else {
-      //     next.disabled = true;
-      //     // alert("Please select an option");
-      //     console.log("button disabled");
-      //   }
-      // }
     } else {
       optionholder.classList.add("options");
       slider.classList.add("slider");
@@ -147,9 +127,26 @@ createques = () => {
 next.addEventListener("click", () => {
   progItems[currQuestion].classList.add("dark-prog-item");
 
+  let option = document.querySelectorAll("input");
+  let options = questions[currQuestion].options;
+
+  // for (var i = 0; i < option.length; i++) {
+  //   if (option[i].checked) {
+  //     nextBtn.disabled = false;
+  //     console.log("button abled");
+  //   } else {
+  //     nextBtn.disabled = true;
+  //     console.log("button disabled");
+  //   }
+  // }
+
   container.innerHTML = "";
   optionholder.innerHTML = "";
 
-  currQuestion++;
   createques();
+
+  console.log("question number:", currQuestion);
+  console.log("radio input", option);
+  console.log("options ", options);
+  currQuestion++;
 });
