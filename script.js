@@ -8,6 +8,7 @@ for (let i = 0; i < questions.length + 1; i++) {
   progressCont.appendChild(item);
 }
 let answers = [];
+let optionsForQues = [];
 
 let currQuestion = 0;
 let progItems = document.querySelectorAll(".prog-item");
@@ -15,17 +16,17 @@ let progItems = document.querySelectorAll(".prog-item");
 const container = document.querySelector(".form-cont");
 const ques = document.createElement("div");
 let optionholder = document.createElement("div");
-const checkbox = document.createElement("span");
 
 let slider = document.createElement("INPUT");
 
-const next = document.querySelector(".next-btn");
-const nextBtn = document.querySelector("button");
+const next = document.querySelector("#next-btn");
 
 slider.setAttribute("type", "range");
+slider.setAttribute("min", "1");
+slider.setAttribute("max", "10");
 
 const createques = () => {
-  if (currQuestion <= questions.length - 1) {
+  if (currQuestion < questions.length) {
     ques.classList.add("form-content");
     ques.innerText =
       [currQuestion + 1] + ". " + questions[currQuestion].question;
@@ -43,15 +44,23 @@ const createques = () => {
         option.setAttribute("value", element);
         option.setAttribute("id", `option-${opId}`);
         optionLabel.setAttribute("for", `option-${opId}`);
-        optionLabel.innerText = element;
+        optionLabel.innerHTML = `<p class="label-para">${element}</p>`;
         optionLabel.appendChild(option);
+        optionLabel.classList.add("option-label");
         optionholder.appendChild(optionLabel);
+
+        if (options.length) {
+          next.removeEventListener("click", onNextClick);
+        }
+        option.addEventListener("change", () =>
+          next.addEventListener("click", onNextClick)
+        );
+
+        optionsForQues.push(option);
       });
     } else {
       optionholder.classList.add("options");
       slider.classList.add("slider");
-      slider.setAttribute("min", "1");
-      slider.setAttribute("max", "10");
 
       optionholder.appendChild(slider);
       let val = slider.value;
@@ -59,6 +68,7 @@ const createques = () => {
       let silderval = document.createElement("span");
       silderval.innerHTML = val;
       optionholder.appendChild(silderval);
+      optionsForQues.push(slider);
 
       slider.oninput = function () {
         silderval.innerHTML = this.value;
@@ -74,29 +84,15 @@ const createques = () => {
   }
 };
 
-next.addEventListener("click", () => {
+function onNextClick() {
   progItems[currQuestion].classList.add("dark-prog-item");
-
-  let option = document.querySelectorAll("input");
-  let options = questions[currQuestion].options;
-
-  // for (var i = 0; i < option.length; i++) {
-  //   if (option[i].checked) {
-  //     nextBtn.disabled = false;
-  //     console.log("button abled");
-  //   } else {
-  //     nextBtn.disabled = true;
-  //     console.log("button disabled");
-  //   }
-  // }
 
   container.innerHTML = "";
   optionholder.innerHTML = "";
 
   createques();
 
-  console.log("question number:", currQuestion);
-  console.log("radio input", option);
-  console.log("options ", options);
   currQuestion++;
-});
+}
+
+next.addEventListener("click", onNextClick);

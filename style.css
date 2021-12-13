@@ -70,6 +70,17 @@
   font-size: 20px;
 }
 
+.option-label {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin: 10px 0;
+}
+
+.label-para {
+  margin: 0 10px;
+}
+
 /* next button starts */
 .next-btn {
   width: 100%;

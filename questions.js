@@ -1,9 +1,5 @@
 export const questions = [
   {
-    question: "",
-    options: "",
-  },
-  {
     question: "What is your age",
     options: ["below 18", "18-25", "25-45", "45-65", "65+"],
   },
