@@ -59,6 +59,7 @@
 
 /* form container ends */
 
+/* options starts */
 .options {
   min-width: 50%;
   display: flex;
@@ -80,6 +81,7 @@
 .label-para {
   margin: 0 10px;
 }
+/* options starts */
 
 /* next button starts */
 .next-btn {
@@ -133,7 +135,7 @@
 /* media query starts */
 
 /* Media Query for Mobile Devices */
-@media only screen and (max-width: 480px) {
+@media (max-width: 480px) {
   .main {
     width: 80%;
   }
@@ -169,6 +171,9 @@
 @media (min-width: 481px) and (max-width: 767px) {
   .main {
     width: 60%;
+  }
+  .progress-cont {
+    width: 75%;
   }
 
   .form-content {
